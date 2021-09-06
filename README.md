@@ -1,12 +1,8 @@
-js_fumble
+rebar_js_concatenator_plugin
 =====
 
-A rebar plugin
-
-Build
------
-
-    $ rebar3 compile
+A rebar3 plugin that concatenates and optionally uglifies sets of JS
+files into bundles.
 
 Use
 ---
@@ -14,13 +10,9 @@ Use
 Add the plugin to your rebar config:
 
     {plugins, [
-        {js_fumble, {git, "https://host/user/js_fumble.git", {tag, "0.1.0"}}}
+        {rebar_js_concatenator_plugin, {git, "https://host/user/rebar_js_concatenator_plugin.git", {tag, "0.1.0"}}}
     ]}.
 
-Then just call your plugin directly in an existing application:
+and enable it like so:
 
-
-    $ rebar3 js_fumble
-    ===> Fetching js_fumble
-    ===> Compiling js_fumble
-    <Plugin Output>
+    {provider_hooks, [{pre, [{compile, {default, rebar_js_concatenator_plugin}}]}]}.
